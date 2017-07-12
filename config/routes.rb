@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :characters
   scope :api do
     resources :users
+    resources :characters
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
   end

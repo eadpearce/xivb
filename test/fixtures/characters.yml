@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  about: MyText
+  lodestone_id: 1
+  user: one
+
+two:
+  about: MyText
+  lodestone_id: 1
+  user: two
