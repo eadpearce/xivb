@@ -27,10 +27,18 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      render json: @user
+    if @current_user.id === @user.id # only allow the user to edit themselves
+      if user_params[:password].blank? # allows editing of other sections without needing password conf
+        user_params.delete(:password)
+        user_params.delete(:password_confirmation)
+      end
+      if @user.update(user_params)
+        render json: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { message: "You cannot edit another user's profile >:(" }, status: :unauthorized
     end
   end
 
@@ -47,6 +55,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest, :image)
+      params.require(:user).permit(:username, :email, :image, :about, :main_job, :age, :password, :password_confirmation)
     end
 end
