@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20170712111609) do
     t.string "email"
     t.string "password_digest"
     t.string "image"
+    t.text "about"
+    t.integer "age"
+    t.string "main_job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
