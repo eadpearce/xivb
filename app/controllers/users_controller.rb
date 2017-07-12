@@ -10,8 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    response = HTTParty.get("http://api.xivdb.com/character/9010552", format: :plain)
-    render json: { user: @user, character: JSON.parse(response) }
+    render json: @user
   end
 
   # POST /users
