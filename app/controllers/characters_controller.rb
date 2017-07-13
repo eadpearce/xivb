@@ -10,8 +10,7 @@ class CharactersController < ApplicationController
 
   # GET /characters/1
   def show
-    response = HTTParty.get("http://api.xivdb.com/character/#{@character.lodestone_id}", format: :plain)
-    render json: { character: @character, data: JSON.parse(response) }
+    render json: @character
   end
 
   # POST /characters
