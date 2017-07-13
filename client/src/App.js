@@ -1,12 +1,20 @@
-import React from 'react'; // ES6. import react from node modules
+import React from 'react';
+import HelloWorld from './HelloWorld';
 
-// create const function
 const App = () => {
-  return (
-    <div className="App">Hello World!</div> // user className not class. class is a reserved keyword in JS
+  return ( // call HelloWorld as a separate component from inside App
+    // assign props for HelloWorld here
+    <div className="App">
+      <HelloWorld name="Dude"/>
+      <HelloWorld name="Jane"/>
+      <HelloWorld name="Dave"/>
+      <HelloWorld name="Cthulhu"/>
+      <HelloWorld/>
+    </div>
   );
 };
-export default App; // like module exports in node
+
+export default App;
 
 // class App extends Component {
 //   constructor(props) {
