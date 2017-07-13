@@ -1,15 +1,11 @@
 import React from 'react';
-import HelloWorld from './HelloWorld';
+import HelloWorldList from './HelloWorldList';
 
 const App = () => {
   return ( // call HelloWorld as a separate component from inside App
-    // assign props for HelloWorld here
+    // assign props for components here
     <div className="App">
-      <HelloWorld name="Dude"/>
-      <HelloWorld name="Jane"/>
-      <HelloWorld name="Dave"/>
-      <HelloWorld name="Cthulhu"/>
-      <HelloWorld/>
+      <HelloWorldList />
     </div>
   );
 };
