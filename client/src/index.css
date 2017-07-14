@@ -8,3 +8,13 @@ li {
   padding: 0;
   margin: 0;
 }
+.active {
+  color: green;
+}
+.App {
+  width: 500px;
+  margin: 100px auto 0;
+  border: 2px solid black;
+  padding: 10px;
+  text-align: center;
+}
