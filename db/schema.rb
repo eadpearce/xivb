@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170712140804) do
     t.text "about"
     t.integer "lodestone_id"
     t.bigint "user_id"
+    t.json "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
