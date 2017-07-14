@@ -1,16 +1,35 @@
 import React from 'react';
 import HelloWorldList from './HelloWorldList';
+import { Link } from 'react-router';
 
-const App = () => {
-  return ( // call HelloWorld as a separate component from inside App
-    // assign props for components here
-    <div className="App">
-      <HelloWorldList />
-    </div>
-  );
-};
+export default React.createClass({
+  render() {
+    return (
+      <div>
+        <h1>React Router Tutorial</h1>
+        <ul role="nav">
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/repos">Repos</Link></li>
+        </ul>
 
-export default App;
+        {/* this adds the content of the component underneath the navbar ^^ so we can have the navbar on every page */}
+        {this.props.children}
+
+      </div>
+    )
+  }
+})
+
+
+// const App = () => {
+//   return ( // call HelloWorld as a separate component from inside App
+//     // assign props for components here
+//     <div id="App">
+//     </div>
+//   );
+// };
+//
+// export default App;
 
 // class App extends Component {
 //   constructor(props) {
