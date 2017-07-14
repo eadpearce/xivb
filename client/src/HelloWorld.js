@@ -23,16 +23,23 @@ class HelloWorld extends Component {
     this.state = { greeting: 'Hello' }; // state is set here but props is set when using the component
     // props cannot be modified but state can
     this.translate = this.translate.bind(this);
+    this.removeGreeting = this.removeGreeting.bind(this);
     // need to do this to tell function that 'this' refers to that specific instance of the component
   }
+  removeGreeting() {
+    this.props.removeGreeting(this.props.name);
+  }
   translate() {
-    this.setState({ greeting: 'こんにちは' });
+    if (this.state.greeting === 'こんにちは') this.setState({ greeting: 'Hello' });
+    else this.setState({ greeting: 'こんにちは' });
   }
   render() {
     return (
       <div className="HelloWorld">{this.state.greeting} {this.props.name}!
       <br/>
       <button onClick={this.translate}>Translate!</button>
+      <br/>
+      <button onClick={this.removeGreeting}>Remove Me!</button>
       </div>
     );
   }
