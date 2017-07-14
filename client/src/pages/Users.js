@@ -28,6 +28,12 @@ class Users extends Component {
               <h3>{user.username}</h3>
               <p><b>Main Character: </b>{user.main.data.name} <i>"{user.main.data.data.title}"</i> on {user.main.data.server}</p>
               <p><b>Main Job: </b>{user.main_job}</p>
+              <p><b>Alts: </b></p>
+              {user.alts.map(alt => {
+                return (alt.data.data.title) ?
+                  (<p key={alt.id}>{alt.data.name} <i>"{alt.data.data.title}"</i> on {alt.data.server}</p>) :
+                  (<p key={alt.id}>{alt.data.name} on {alt.data.server}</p>)
+              })}
               <p><b>Age: </b>{user.age}</p>
               <p><b>About: </b>{user.about}</p>
             </li>
