@@ -19,6 +19,7 @@ import About from './pages/About'
 import Repos from './pages/Repos'
 import Repo from './pages/Repo'
 import Home from './pages/Home'
+import Users from './pages/Users'
 
 // instead of rendering app we render the router
 // can nest components inside a route
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path="/repos" component={Repos}>
           <Route path="/repos/:userName/:repoName" component={Repo} />
         </Route>
+        <Route path="/users" component={Users}/>
       </Route>
     </Router>
   ),

@@ -22,6 +22,7 @@ class App extends Component {
           <li><NavLink to="/" onlyActiveOnIndex={true}>Home</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to="/repos">Repos</NavLink></li>
+          <li><NavLink to="/users">Users</NavLink></li>
         </ul>
 
         {/* this adds the content of the component underneath the navbar ^^ so we can have the navbar on every page */}
@@ -34,56 +35,3 @@ class App extends Component {
 }
 
 export default App
-
-
-// const App = () => {
-//   return ( // call HelloWorld as a separate component from inside App
-//     // assign props for components here
-//     <div id="App">
-//     </div>
-//   );
-// };
-//
-// export default App;
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = {
-//       users: []
-//     };
-//   }
-//   componentDidMount() {
-//     this.fetchUsers();
-//   }
-//   fetchUsers() {
-//     fetch('/api/users')
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log(data);
-//       this.setState({ users: data });
-//     });
-//   }
-//   render() {
-//     const users = this.state.users;
-//     return (
-//       <main>
-//         <section>
-//         {users.map((user, index) => {
-//           return (
-//             <li key={ index }>
-//               <h3>{user.username}</h3>
-//               <p><b>Main Character: </b>{user.main.data.name} <i>"{user.main.data.data.title}"</i> on {user.main.data.server}</p>
-//               <p><b>Main Job: </b>{user.main_job}</p>
-//               <p><b>Age: </b>{user.age}</p>
-//               <p><b>About: </b>{user.about}</p>
-//             </li>
-//           )
-//         })}
-//         </section>
-//       </main>
-//     );
-//   }
-// }
-// export default App;
