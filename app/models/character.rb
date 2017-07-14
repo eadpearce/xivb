@@ -4,5 +4,4 @@ class Character < ApplicationRecord
     response = HTTParty.get("http://api.xivdb.com/character/#{character.lodestone_id}", format: :plain)
     character.data = JSON.parse(response)
   end
-
 end

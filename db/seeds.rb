@@ -20,3 +20,7 @@ klyn.characters.create!(
   lodestone_id: 9010552,
   char_type: "main"
 )
+klyn.characters.create!(
+  lodestone_id: 11081160,
+  char_type: "alt"
+)
