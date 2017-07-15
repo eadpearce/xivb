@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NavLink from '../components/NavLink'
 
 class Users extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Users extends Component {
     fetch('/api/users')
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
       this.setState({ users: data });
     });
   }
@@ -25,17 +26,7 @@ class Users extends Component {
         {users.map((user, index) => {
           return (
             <li key={ index }>
-              <h3>{user.username}</h3>
-              <p><b>Main Character: </b>{user.main.data.name} <i>"{user.main.data.data.title}"</i> on {user.main.data.server}</p>
-              <p><b>Main Job: </b>{user.main_job}</p>
-              <p><b>Alts: </b></p>
-              {user.alts.map(alt => {
-                return (alt.data.data.title) ?
-                  (<p key={alt.id}>{alt.data.name} <i>"{alt.data.data.title}"</i> on {alt.data.server}</p>) :
-                  (<p key={alt.id}>{alt.data.name} on {alt.data.server}</p>)
-              })}
-              <p><b>Age: </b>{user.age}</p>
-              <p><b>About: </b>{user.about}</p>
+              <NavLink to={'/users/'+user.username}>{user.username}</NavLink>
             </li>
           )
         })}
