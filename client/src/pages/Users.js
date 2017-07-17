@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavLink from '../components/NavLink'
 import Loading from '../components/Loading'
+import Auth from '../Auth'
 
 class Users extends Component {
   constructor(props) {
@@ -14,11 +15,9 @@ class Users extends Component {
     this.fetchUsers();
   }
   fetchUsers() {
-    fetch('/api/users')
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data);
-      this.setState({ users: data });
+    Auth.fetch('/api/users', {})
+    .then(response => {
+      this.setState({ users: response });
       this.setState({ loaded: true });
     });
   }

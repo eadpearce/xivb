@@ -6,6 +6,7 @@ class Loading extends Component {
     return (
       <div>
         <img src={loading} height="100" alt="Now loading"/>
+        <p>Fetching data...</p>
       </div>
     )
   }
