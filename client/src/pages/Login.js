@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Auth from '../Auth'
 
 class Login extends Component {
   constructor(props) {
@@ -35,7 +36,8 @@ class Login extends Component {
     // get the token back
     .then(data => {
       const token = data.token;
-      console.log(token);
+      // save token to localStorage with Auth
+      Auth.setToken(token);
     });
   }
   render() {

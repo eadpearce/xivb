@@ -22,6 +22,7 @@ import Home from './pages/Home'
 import Users from './pages/Users'
 import User from './pages/User'
 import Login from './pages/Login'
+import Auth from './Auth'
 
 // instead of rendering app we render the router
 // can nest components inside a route
@@ -30,6 +31,13 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
+        <Route
+          path="/logout"
+          onEnter={(nextState, replace) => {
+            Auth.removeToken();
+            replace('/');
+          }}/>
+        <Route path="/login" component={Login}/>
         <Route path="/about" component={About}/>
         <Route path="/repos" component={Repos}>
           <Route path="/repos/:userName/:repoName" component={Repo} />
