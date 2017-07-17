@@ -14,9 +14,7 @@ class Login extends Component {
     const field = e.target.name;
     const user = this.state.user;
     user[field] = e.target.value;
-    this.setState({
-      user
-    });
+    this.setState({ user });
   }
   onSubmit(e) {
     e.preventDefault();
@@ -38,6 +36,7 @@ class Login extends Component {
       const token = data.token;
       // save token to localStorage with Auth
       Auth.setToken(token);
+      this.props.router.push('/');
     });
   }
   render() {
