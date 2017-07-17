@@ -4,7 +4,7 @@ class About extends Component {
   render() {
     return (
     <div>
-      XIVB is a blogging site for players of the MMO Final Fantasy XIV.
+      XIVB is a blogging site for players of the MMORPG Final Fantasy XIV.
     </div>
     )
   }
