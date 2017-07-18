@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavLink from '../components/NavLink'
 import Loading from '../components/Loading'
+import {Link} from 'react-router'
 import Auth from '../Auth'
 
 class User extends Component {
@@ -38,6 +39,12 @@ class User extends Component {
         })}
         <p><b>Age: </b>{user.age}</p>
         <p><b>About: </b>{user.about}</p>
+        <p><b>Recent posts: </b></p>
+        {user.posts.map(post => {
+          return (post.title) ?
+          (<p key={post.id}><Link to={'/posts/'+post.id}>{post.title}</Link></p>) :
+          (<p key="1">No posts yet.</p>)
+        })}
       </div>
     ) : (
       <Loading/>

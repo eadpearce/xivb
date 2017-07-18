@@ -5,7 +5,9 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create
   validates :password_confirmation, presence: true, on: :create
 
-  has_many :characters
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :characters, dependent: :destroy
   def main
     characters.where(char_type: "main").first
   end

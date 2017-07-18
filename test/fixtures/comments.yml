@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: 
+  user: 
+  character: 
+  reply_level: 
+  parent: 1
+
+two:
+  body: 
+  user: 
+  character: 
+  reply_level: 
+  parent: 1

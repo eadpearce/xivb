@@ -36,3 +36,13 @@ klyn.characters.create!(
   lodestone_id: 16447300,
   char_type: "alt"
 )
+post = Post.create!(
+  title: "Hi",
+  body: "Hello world!",
+  user: klyn
+)
+Comment.create!(
+  body: "yo",
+  user: klyn,
+  post: post
+)

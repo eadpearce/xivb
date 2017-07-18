@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     render :json => @user.as_json(
       :include => {
         :main => {:only => [:id, :data, :lodestone_id]},
-        :alts => {:only => [:id, :data, :lodestone_id]}
+        :alts => {:only => [:id, :data, :lodestone_id]},
+        :posts => {:only => [:title, :id]}
       },
       :only => [:username, :main_job, :about, :age]
     )
