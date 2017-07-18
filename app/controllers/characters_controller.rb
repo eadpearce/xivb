@@ -10,7 +10,7 @@ class CharactersController < ApplicationController
 
   # GET /characters/1
   def show
-    render json: @character
+    render json: @character, exclude: ['user.main']
   end
 
   # POST /characters

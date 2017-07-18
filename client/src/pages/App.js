@@ -31,6 +31,7 @@ class App extends Component {
           <li><NavLink to="/" onlyActiveOnIndex={true}>Home</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to="/users">Users</NavLink></li>
+          <li><NavLink to="/characters">Characters</NavLink></li>
           <li>{button}</li>
         </ul>
 

@@ -5,7 +5,8 @@ class CreateCharacters < ActiveRecord::Migration[5.1]
       t.integer :lodestone_id
       t.references :user, foreign_key: true
       t.json :data
-      t.string :char_type  
+      t.string :char_type
+      t.datetime :data_updated
 
       t.timestamps
     end
