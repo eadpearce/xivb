@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :users, param: :username
     resources :characters
+    get 'users/:user_id/posts', to: 'posts#index_by_user'
     post 'register', to: 'authentications#register'
     post 'login', to: 'authentications#login'
   end

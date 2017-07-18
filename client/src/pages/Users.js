@@ -17,8 +17,7 @@ class Users extends Component {
   fetchUsers() {
     Auth.fetch('/api/users', {})
     .then(response => {
-      this.setState({ users: response });
-      this.setState({ loaded: true });
+      this.setState({ users: response, loaded: true });
     });
   }
   render() {
@@ -26,9 +25,9 @@ class Users extends Component {
     return (this.state.loaded) ?
     (
       <div>
-      {users.map((user, index) => {
+      {users.map(user => {
         return (
-          <li key={ index }>
+          <li key={user.id}>
             <NavLink to={'/users/'+user.username}>{user.username}</NavLink>
           </li>
         )

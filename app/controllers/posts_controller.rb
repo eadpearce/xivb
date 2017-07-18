@@ -1,12 +1,31 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!, :except => [:show, :index, :index_by_user]
 
   # GET /posts
   def index
     @posts = Post.all
+    render :json => @posts.as_json(
+      :include => {
+        :user => {:only => :username},
+        :character => {
+          :only => [:id, :data]},
+      },
+      :only => [:title, :body, :created_at, :id]
+    )
+  end
 
-    render json: @posts
+  def index_by_user
+    user = User.find_by(username: params[:user_id])
+    @posts = Post.where(user_id: user.id)
+    render :json => @posts.as_json(
+      :include => {
+        :user => {:only => :username},
+        :character => {
+          :only => [:id, :data]},
+      },
+      :only => [:title, :body, :created_at, :id]
+    )
   end
 
   # GET /posts/1

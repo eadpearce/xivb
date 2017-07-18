@@ -19,6 +19,8 @@ import Repo from './pages/Repo'
 import Home from './pages/Home'
 import Users from './pages/Users'
 import User from './pages/User'
+import Posts from './pages/Posts'
+import Post from './pages/Post'
 import Characters from './pages/Characters'
 import Character from './pages/Character'
 import Login from './pages/Login'
@@ -40,7 +42,9 @@ ReactDOM.render(
         <Route path="/login" component={Login}/>
         <Route path="/about" component={About}/>
         <Route path="/users" component={Users}/>
-        <Route path="/users/:username" component={User} />
+        <Route path="/users/:username" component={User}/>
+        <Route path="/users/:username/posts" component={Posts}/>
+        <Route path="/users/:username/posts/:postId" component={Post}/>
         <Route path="/characters" component={Characters}/>
         <Route path="/characters/:characterId" component={Character} />
         </Route>
