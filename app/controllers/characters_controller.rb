@@ -5,12 +5,22 @@ class CharactersController < ApplicationController
   # GET /characters
   def index
     @characters = Character.all
-    render json: @characters
+    render :json => @characters.as_json(
+      :include => {
+        :user => {:only => [:username]},
+      },
+      :only => [:id, :about, :data, :lodestone_id]
+    )
   end
 
   # GET /characters/1
   def show
-    render json: @character, exclude: ['user.main']
+    render :json => @character.as_json(
+      :include => {
+        :user => {:only => [:username]},
+      },
+      :only => [:id, :about, :data, :lodestone_id]
+    )
   end
 
   # POST /characters

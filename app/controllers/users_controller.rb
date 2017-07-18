@@ -5,12 +5,18 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users
+    render :json => @users.as_json(:only => :username)
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render :json => @user.as_json(
+      :include => {
+        :main => {:only => [:id, :data, :lodestone_id]},
+        :alts => {:only => [:id, :data, :lodestone_id]}
+      },
+      :only => [:username, :main_job, :about, :age]
+    )
   end
 
   # POST /users
