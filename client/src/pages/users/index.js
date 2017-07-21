@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import Auth from '../../Auth'
+import classLists from '../../css/classLists'
 
 class Users extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Users extends Component {
     const users = this.state.users;
     return (this.state.loaded) ?
     (
-      <div>
+      <div className={classLists.container}>
       {users.map(user => {
         return (
           <li key={user.id}>

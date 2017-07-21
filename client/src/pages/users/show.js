@@ -3,6 +3,7 @@ import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import {Link} from 'react-router'
 import Auth from '../../Auth'
+import classLists from '../../css/classLists'
 
 class User extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class User extends Component {
     const user = this.state.user;
     return (this.state.loaded) ?
     (
-      <div>
+      <div className={classLists.container}>
         <h2><NavLink to={'/users/'+user.username}>{user.username}</NavLink>'s Profile</h2>
         <p><b>Main Character: </b>
           <Link to={'/characters/'+user.main.id}>{user.main.data.name} <i>"{user.main.data.data.title}"</i></Link> on {user.main.data.server}</p>

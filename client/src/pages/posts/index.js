@@ -3,6 +3,7 @@ import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import {Link} from 'react-router'
 import Auth from '../../Auth'
+import classLists from '../../css/classLists'
 
 class Posts extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Posts extends Component {
   render() {
     const posts = this.state.posts;
     return (this.state.loaded) ? (
-      <div>
+      <div className={classLists.container}>
       {posts.map(post => {
         return (
           <div key={post.id}>

@@ -3,6 +3,7 @@ import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import {Link} from 'react-router'
 import Auth from '../../Auth'
+import classLists from '../../css/classLists'
 
 class Post extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Post extends Component {
   render() {
     const post = this.state.post;
     return (this.state.loaded) ? (
-      <div>
+      <div className={classLists.container}>
       <h2>{post.title}</h2>
       <p>Posted at {post.created_at} by <Link to={"/users/"+post.user.username}>{post.user.username}</Link></p>
       <p>{post.body}</p>

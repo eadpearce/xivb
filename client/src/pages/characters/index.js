@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import Auth from '../../Auth'
+import classLists from '../../css/classLists'
 
 class Characters extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Characters extends Component {
   render() {
     const characters = this.state.characters;
     return (this.state.loaded) ? (
-      <div>
+      <div className={classLists.container}>
       {characters.map((character, index) => {
         return (
           <li key={ index }>

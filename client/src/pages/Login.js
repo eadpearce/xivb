@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import Auth from '../Auth'
+import classLists from '../css/classLists'
+import Loading from '../components/Loading'
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {email: '', password: ''}
+      user: {email: '', password: ''},
+      errors: '',
+      loaded: true
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -17,6 +21,7 @@ class Login extends Component {
     this.setState({ user });
   }
   onSubmit(e) {
+    this.setState({ loaded: false });
     e.preventDefault();
     // send a req to /login with credentials
     fetch('/api/login', {
@@ -33,6 +38,7 @@ class Login extends Component {
     .then(res => res.json())
     // get the token back
     .then(data => {
+      this.setState({ loaded: true });
       if (data.token) {
         const token = data.token;
         // save token to localStorage with Auth
@@ -45,9 +51,13 @@ class Login extends Component {
   }
   render() {
     const user = this.state.user;
+    let error = null;
+    let loading = null;
+    if (!this.state.loaded) loading = <Loading/>;
+    if (this.state.errors[0]) error = <p className="red">{this.state.errors[0]}</p>
     return (
-      <div>
-      <h3>Login</h3>
+      <div className={classLists.container}>
+      <h2 className="f1">Login</h2>
       <form action="/" onSubmit={this.onSubmit}>
       <label htmlFor="email">Email:</label>
       <input
@@ -69,6 +79,8 @@ class Login extends Component {
         className="db"
         type="submit" value="Login"></input>
       </form>
+      {error}
+      {loading}
       </div>
     )
   }
