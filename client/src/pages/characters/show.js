@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import NavLink from '../components/NavLink'
+import NavLink from '../../components/NavLink'
 import { Link } from 'react-router'
-import Auth from '../Auth'
-import Loading from '../components/Loading'
+import Auth from '../../Auth'
+import Loading from '../../components/Loading'
 
 class Character extends Component {
   constructor(props) {

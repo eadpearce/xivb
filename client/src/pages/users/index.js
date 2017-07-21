@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import NavLink from '../components/NavLink'
-import Loading from '../components/Loading'
-import Auth from '../Auth'
+import NavLink from '../../components/NavLink'
+import Loading from '../../components/Loading'
+import Auth from '../../Auth'
 
 class Users extends Component {
   constructor(props) {

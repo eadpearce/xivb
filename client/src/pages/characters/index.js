@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import NavLink from '../components/NavLink'
-import Loading from '../components/Loading'
+import NavLink from '../../components/NavLink'
+import Loading from '../../components/Loading'
+import Auth from '../../Auth'
 
 class Characters extends Component {
   constructor(props) {
@@ -14,11 +15,10 @@ class Characters extends Component {
     this.fetchCharacters();
   }
   fetchCharacters() {
-    fetch('/api/characters')
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data);
-      this.setState({ characters: data });
+    Auth.fetch('/api/characters', {})
+    .then(response => {
+      // console.log(response);
+      this.setState({ characters: response });
       this.setState({ loaded: true });
     });
   }

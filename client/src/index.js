@@ -14,15 +14,14 @@ import './css/tachyons.css'; // import css
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import About from './pages/About'
-import Repos from './pages/Repos'
-import Repo from './pages/Repo'
 import Home from './pages/Home'
-import Users from './pages/Users'
-import User from './pages/User'
-import Posts from './pages/Posts'
-import Post from './pages/Post'
-import Characters from './pages/Characters'
-import Character from './pages/Character'
+import Users from './pages/users/index'
+import User from './pages/users/show'
+import Posts from './pages/posts/index'
+import Post from './pages/posts/show'
+import NewPost from './pages/posts/new'
+import Characters from './pages/characters/index'
+import Character from './pages/characters/show'
 import Login from './pages/Login'
 import Auth from './Auth'
 
@@ -47,6 +46,7 @@ ReactDOM.render(
         <Route path="/users/:username/posts/:postId" component={Post}/>
         <Route path="/characters" component={Characters}/>
         <Route path="/characters/:characterId" component={Character} />
+        <Route path="/posts/new" component={NewPost} />
         </Route>
     </Router>
   ),

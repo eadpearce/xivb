@@ -3,18 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.active {
-  color: green;
-}
-.App {
-  width: 500px;
-  margin: 100px auto 0;
-  border: 2px solid black;
-  padding: 10px;
-  text-align: center;
+.nav a {
+  color: white;
 }

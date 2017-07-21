@@ -5,7 +5,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: []
+      user: {email: '', password: ''}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -33,10 +33,14 @@ class Login extends Component {
     .then(res => res.json())
     // get the token back
     .then(data => {
-      const token = data.token;
-      // save token to localStorage with Auth
-      Auth.setToken(token);
-      this.props.router.push('/');
+      if (data.token) {
+        const token = data.token;
+        // save token to localStorage with Auth
+        Auth.setToken(token);
+        this.props.router.push('/');
+      } else {
+        this.setState({ errors: data.errors });
+      }
     });
   }
   render() {
@@ -45,19 +49,25 @@ class Login extends Component {
       <div>
       <h3>Login</h3>
       <form action="/" onSubmit={this.onSubmit}>
+      <label htmlFor="email">Email:</label>
       <input
+        className="db"
         name="email"
         type="email"
         value={user.email}
         onChange={this.onChange}>
-      </input><br/>
+      </input>
+      <label htmlFor="password">Password:</label>
       <input
+        className="db"
         name="password"
         type="password"
         value={user.password}
         onChange={this.onChange}>
       </input>
-      <input type="submit" value="Login"></input>
+      <input
+        className="db"
+        type="submit" value="Login"></input>
       </form>
       </div>
     )
