@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NavLink from '../../components/NavLink'
 import Loading from '../../components/Loading'
 import {Link} from 'react-router'
 import Auth from '../../Auth'

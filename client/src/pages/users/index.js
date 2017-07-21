@@ -25,7 +25,7 @@ class Users extends Component {
     const users = this.state.users;
     return (this.state.loaded) ?
     (
-      <div className={classLists.container}>
+      <main className={classLists.container}>
       {users.map(user => {
         return (
           <li key={user.id}>
@@ -33,7 +33,7 @@ class Users extends Component {
           </li>
         )
       })}
-      </div>
+      </main>
     ) : (
       <Loading/>
     );

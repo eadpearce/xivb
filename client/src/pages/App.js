@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import HelloWorldList from '../components/HelloWorldList'
-import NavLink from '../components/NavLink'
 import Home from './Home'
-import Auth from '../Auth'
 import Header from '../components/Header'
-import { IndexLink } from 'react-router'
 
 // can also use activeStyle={{ color: 'red' }}
 // with NavLink the link to Home is always active
