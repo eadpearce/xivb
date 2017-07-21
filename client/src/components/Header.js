@@ -6,11 +6,15 @@ import NavLink from './NavLink'
 
 class Header extends Component {
   render() {
-    let button = null;
+    let loggedIn = null;
     if (Auth.isLoggedIn()) {
-      button = <Link to="/logout">Log Out</Link>;
+      loggedIn = <li className="link fl white"><Link to="/logout">Log Out</Link></li>;
     } else {
-      button = <Link to="/login">Log In</Link>;
+      loggedIn = <li className="link fl white"><Link to="/login">Log In</Link></li>;
+    }
+    let loggedInAs = null;
+    if (Auth.isLoggedIn()) {
+      loggedInAs = <li className="link fl pr2 white">Logged in as <Link to={"/users/"+Auth.currentUser()}>{Auth.currentUser()}</Link></li>
     }
     return (
       <div className="nav w-100 h2 pa2 bg-black">
@@ -20,7 +24,8 @@ class Header extends Component {
           <li className="link fl pr2"><NavLink to="/about">About</NavLink></li>
           <li className="link fl pr2"><NavLink to="/users">Users</NavLink></li>
           <li className="link fl pr2"><NavLink to="/characters">Characters</NavLink></li>
-          <li className="link fl">{button}</li>
+          {loggedInAs}
+          {loggedIn}
         </ul>
       </div>
     )

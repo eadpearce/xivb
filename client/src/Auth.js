@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode'
+
 class Auth {
   static setToken(token) {
     localStorage.setItem('token', token);
@@ -9,6 +11,12 @@ class Auth {
 
   static removeToken() {
     localStorage.removeItem('token');
+  }
+
+  static currentUser() {
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    return decoded.username;
   }
 
   static getToken() {

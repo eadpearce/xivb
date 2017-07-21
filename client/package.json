@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "jwt-decode": "^2.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.0"
