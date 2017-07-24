@@ -56,32 +56,29 @@ class Login extends Component {
     if (!this.state.loaded) loading = <Loading/>;
     if (this.state.errors[0]) error = <p className="red">{this.state.errors[0]}</p>
     return (
-      <div className={classLists.container}>
-      <h2 className="f1">Login</h2>
+      <main className={classLists.container}>
+      <h1 className="f1 glow cinzel">Login</h1>
       <form action="/" onSubmit={this.onSubmit}>
       <label htmlFor="email">Email:</label>
-      <input
-        className="db"
+      <input className="db mb2 w-50-ns w-100"
         name="email"
         type="email"
         value={user.email}
         onChange={this.onChange}>
       </input>
       <label htmlFor="password">Password:</label>
-      <input
-        className="db"
+      <input className="db mb2 w-50-ns w-100"
         name="password"
         type="password"
         value={user.password}
         onChange={this.onChange}>
       </input>
-      <input
-        className="db"
+      <input className="btn green-btn"
         type="submit" value="Login"></input>
       </form>
       {error}
       {loading}
-      </div>
+      </main>
     )
   }
 }

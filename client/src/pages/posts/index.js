@@ -27,16 +27,17 @@ class Posts extends Component {
   render() {
     const posts = this.state.posts;
     return (this.state.loaded) ? (
-      <div className={classLists.container}>
+      <main className={classLists.container}>
+      <h1 className="cinzel f1 glow">{this.props.params.username}'s Posts</h1>
       {posts.map(post => {
         return (
           <div key={post.id}>
-          <h2><Link to={"/users/"+post.user.username+"/posts/"+post.id}>{post.title}</Link></h2>
-          <p>Posted at {post.created_at} by <Link to={"/users/"+post.user.username}>{post.user.username}</Link></p>
+          <Link className="f4 play grd-gold" to={"/users/"+post.user.username+"/posts/"+post.id}>{post.title}</Link>
+          <p className="mt2 mb3">Posted at {post.date_created}</p>
           </div>
         )
       })}
-      </div>
+      </main>
     ) : (
       <Loading/>
     )

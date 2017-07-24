@@ -6,14 +6,14 @@ import classLists from '../css/classLists'
 class Home extends Component {
   render() {
     return (Auth.isLoggedIn()) ? ( // USER DASHBOARD
-      <div className={classLists.container}>
-      <h2 className="f1">Dashboard</h2>
+      <main className={classLists.container}>
+      <h1 className="f1 cinzel glow">Dashboard</h1>
       <Link to="/posts/new">New post</Link>
-      </div>
+      </main>
     ) : ( // HOMEPAGE
-      <div className={classLists.container}>
-      <h2 className="f1">Home</h2>
-      </div>
+      <main className={classLists.container}>
+      <h1 className="f1 glow cinzel">Home</h1>
+      </main>
     );
   }
 }

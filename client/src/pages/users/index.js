@@ -26,6 +26,7 @@ class Users extends Component {
     return (this.state.loaded) ?
     (
       <main className={classLists.container}>
+      <h1 className="glow cinzel f1">Users</h1>
       {users.map(user => {
         return (
           <li key={user.id}>

@@ -23,6 +23,7 @@ import Post from './pages/posts/show'
 import NewPost from './pages/posts/new'
 import Characters from './pages/characters/index'
 import Character from './pages/characters/show'
+import Comment from './pages/comments/show'
 import Login from './pages/Login'
 import Auth from './Auth'
 
@@ -47,6 +48,7 @@ ReactDOM.render(
         <Route path="/users/:username/posts/:postId" component={Post}/>
         <Route path="/characters" component={Characters}/>
         <Route path="/characters/:characterId" component={Character} />
+        <Route path="/comments/:commentId" component={Comment} />
         <Route path="/posts/new" component={NewPost} />
         </Route>
     </Router>

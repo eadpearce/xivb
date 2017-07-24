@@ -36,7 +36,8 @@ class NewPost extends Component {
   render() {
     const post = this.state.post;
     return (this.state.loaded) ? (
-      <div className={classLists.container}>
+      <main className={classLists.container}>
+      <h1 className="glow cinzel f1">New Post</h1>
       <form action="/posts" onSubmit={this.onSubmit}>
       <input
         onChange={this.onChange}
@@ -50,9 +51,9 @@ class NewPost extends Component {
         name="post"
         className="db mv2 w-100"
         rows="20">{post.body}</textarea>
-      <input type="submit" value="Post"></input>
+      <input className="btn green-btn" type="submit" value="Post"></input>
       </form>
-      </div>
+      </main>
     ) : (
       <Loading/>
     )

@@ -11,7 +11,7 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
       },
-      :only => [:title, :body, :created_at, :id]
+      :only => [:title, :body, :date_created, :id]
     )
   end
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
       },
-      :only => [:title, :body, :created_at, :id]
+      :only => [:title, :body, :date_created, :created_at, :id]
     )
   end
 
@@ -36,20 +36,20 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
         :comments => {
-          :only => [:body, :id],
+          :only => [:body, :id, :date_created],
           :include => {
             :user => {:only => :username}
           }
         }
       },
-      :only => [:title, :body, :created_at]
+      :only => [:title, :body, :date_created]
     )
   end
 
   # POST /posts
   def create
     @post = Post.new(post_params)
-    @post.user = @current_user 
+    @post.user = @current_user
     if @post.save
       render json: @post, status: :created, location: @post
     else

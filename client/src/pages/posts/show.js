@@ -8,7 +8,8 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: []
+      user: [],
+      loaded: false
     };
   }
   componentDidMount() {
@@ -26,23 +27,23 @@ class Post extends Component {
   render() {
     const post = this.state.post;
     return (this.state.loaded) ? (
-      <div className={classLists.container}>
-      <h2>{post.title}</h2>
-      <p>Posted at {post.created_at} by <Link to={"/users/"+post.user.username}>{post.user.username}</Link></p>
-      <p>{post.body}</p>
-      <h3>Comments</h3>
+      <main className={classLists.container}>
+      <h1 className="glow f1 cinzel">{post.title}</h1>
+      <p className="grd-silver f4 play">At {post.date_created} <Link className="grd-gold" to={"/users/"+post.user.username}>{post.user.username}</Link> wrote:</p>
+      <p className="blog-post">{post.body}</p>
+      <h2 className="grd-silver play f4">Comments</h2>
       {post.comments.map(comment => {
         return (post.comments[0]) ?
         (
           <div key={comment.id}>
-            <p><Link to={"/users/"+comment.user.username}>{comment.user.username}</Link> said: </p>
-            <p>{comment.body}</p>
+            <p className="grd-silver play f5">At <Link className="grd-gold" to={"/comments/"+comment.id}>{comment.date_created}</Link> <Link className="grd-gold" to={"/users/"+comment.user.username}>{comment.user.username}</Link> said: </p>
+            <p className="blog-post">{comment.body}</p>
           </div>
         ) : (
           <div key="1">No comments yet.</div>
         )
       })}
-      </div>
+      </main>
     ) : (
       <Loading/>
     )

@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
             :user => {:only => :username}}
           }
       },
-      :only => [:body, :created_at]
+      :only => [:body, :date_created, :created_at]
     )
   end
 

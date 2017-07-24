@@ -11,12 +11,13 @@ body {
   background: linear-gradient(#172951,#081027);
   background-attachment: fixed;
 }
-p, h2, h3, h4 { margin-bottom: .5rem; }
+p, h2, h3, h4 { margin-bottom: 1rem; }
 h1 { padding-bottom: 2rem; padding-top: 2.5rem; }
 .play { font-family: 'Play', Impact, sans-serif; text-transform: uppercase; font-weight: bold; }
 .cinzel { font-family: 'Cinzel', serif;}
 a:visited { color: #ffceeaa }
 a { color: #3f7aba; text-decoration: none; }
+a:hover { color: #7dacd2; }
 .grd-gold {
   background: -webkit-linear-gradient(#faf0db,#ba881c);
     -webkit-background-clip: text;
@@ -37,6 +38,7 @@ a.grd-gold:hover {
   text-shadow: 0 0 10px #ffc107;
 }
 .blog-post {
+  line-height: 1.5;
   background: beige;
   color: #000;
   padding: 1rem;
@@ -76,4 +78,43 @@ li {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+.btn {
+  width: 100px;
+  text-align: center;
+  padding: 10px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  -webkit-transition: color,.2s ease;
+  -moz-transition: color,.2s ease;
+  -ms-transition: color,.2s ease;
+  -o-transition: color,.2s ease;
+  transition: color,.2s ease;
+  cursor: pointer;
+}
+.green-btn {
+  color: #fff;
+  background: -moz-linear-gradient(top,#fff 0,#104d00 25%,#689500);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fff),color-stop(.25,#104d00),to(#689500));
+}
+.green-btn:hover {
+  color: #fff;
+  background: -moz-linear-gradient(top,#fff 0,#306d20 25%,#88b520);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fff),color-stop(.25,#306d20),to(#88b520));
+}
+.blue-btn {
+  color: #fff;
+  background: -moz-linear-gradient(top,#fff 0,#22273f 25%,#3e81b4);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fff),color-stop(.25,#22273f),to(#3e81b4));
+}
+.red-btn {
+  color: #fff;
+  background: -moz-linear-gradient(top,#fff 0,#4f2020 25%,#ad2020);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fff),color-stop(.25,#4f2020),to(#ad2020));
 }

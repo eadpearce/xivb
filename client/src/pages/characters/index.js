@@ -26,7 +26,8 @@ class Characters extends Component {
   render() {
     const characters = this.state.characters;
     return (this.state.loaded) ? (
-      <div className={classLists.container}>
+      <main className={classLists.container}>
+      <h1 className="f1 glow cinzel">Characters</h1>
       {characters.map((character, index) => {
         return (
           <li key={ index }>
@@ -34,7 +35,7 @@ class Characters extends Component {
           </li>
         )
       })}
-      </div>
+      </main>
     ) : (
       <Loading/>
     );
