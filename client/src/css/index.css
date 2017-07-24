@@ -12,9 +12,10 @@ body {
   background-attachment: fixed;
 }
 p, h2, h3, h4 { margin-bottom: 1rem; }
-h1 { padding-bottom: 2rem; padding-top: 2.5rem; }
+h1 { margin-bottom: 2rem; margin-top: 2.5rem; }
 .play { font-family: 'Play', Impact, sans-serif; text-transform: uppercase; font-weight: bold; }
 .cinzel { font-family: 'Cinzel', serif;}
+.script { font-family: 'Tangerine', cursive;}
 a:visited { color: #ffceeaa }
 a { color: #3f7aba; text-decoration: none; }
 a:hover { color: #7dacd2; }
