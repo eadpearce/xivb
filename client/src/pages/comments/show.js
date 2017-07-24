@@ -28,9 +28,9 @@ class Comment extends Component {
     const comment = this.state.comment;
     return (this.state.loaded) ? (
       <main className={classLists.container}>
-      <h1 className="f2 glow cinzel">Comment on <Link className="white hover-yellow" to={"/users/"+comment.post.user.username+"/posts/"+comment.post.id}>{comment.post.title}</Link></h1>
+      <h1 className="f2 glow cinzel">Comment on <Link className="white hover-yellow" to={"/"+comment.post.user.username+"/posts/"+comment.post.id}>{comment.post.title}</Link></h1>
       <div key={comment.id}>
-        <p className="grd-silver play f5">At <Link className="grd-gold" to={"/comments/"+comment.id}>{comment.date_created}</Link> <Link className="grd-gold" to={"/users/"+comment.user.username}>{comment.user.username}</Link> said: </p>
+        <p className="grd-silver play f5">At <Link className="grd-gold" to={"/comments/"+comment.id}>{comment.date_created}</Link> <Link className="grd-gold" to={"/"+comment.user.username}>{comment.user.username}</Link> said: </p>
         <p className="blog-post">{comment.body}</p>
       </div>
       </main>

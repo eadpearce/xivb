@@ -32,7 +32,7 @@ class Posts extends Component {
       {posts.map(post => {
         return (
           <div key={post.id}>
-          <Link className="f4 play grd-gold" to={"/users/"+post.user.username+"/posts/"+post.id}>{post.title}</Link>
+          <Link className="f4 play grd-gold" to={"/"+post.user.username+"/posts/"+post.id}>{post.title}</Link>
           <p className="mt2 mb3">Posted at {post.date_created}</p>
           </div>
         )

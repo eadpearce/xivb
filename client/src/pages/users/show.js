@@ -39,10 +39,10 @@ class User extends Component {
     return (this.state.loaded) ?
     (
       <main className={classLists.container}>
-        <h1 className="glow cinzel f1"><NavLink className="white hover-white" to={'/users/'+user.username}>{user.username}</NavLink>'s Profile</h1>
+        <h1 className="glow cinzel f1"><NavLink className="white hover-white" to={'/'+user.username}>{user.username}</NavLink>'s Profile</h1>
         {/* NAVIGATION HERE */}
         <div className="fl db">
-          <Link className="grd-gold play f4 mb2" to={"/users/"+user.username+"/posts"}>
+          <Link className="grd-gold play f4 mb2" to={"/"+user.username+"/posts"}>
           <img className="v-mid pr2" src="https://ffxiv.gamerescape.com/w/images/8/86/Main_Command_26_Icon.png"/>
           Posts</Link>
         </div>
@@ -75,7 +75,7 @@ class User extends Component {
           if (post) {
             if (post.title) {
               return (
-              <p key={post.id}><Link to={'/users/'+user.username+'/posts/'+post.id}>{post.title}</Link></p>
+              <p key={post.id}><Link to={'/'+user.username+'/posts/'+post.id}>{post.title}</Link></p>
             ) } else return <p key="1">No posts yet.</p>
           }
         })}

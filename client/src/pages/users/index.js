@@ -30,7 +30,7 @@ class Users extends Component {
       {users.map(user => {
         return (
           <li key={user.id}>
-            <NavLink to={'/users/'+user.username}>{user.username}</NavLink>
+            <NavLink to={'/'+user.username}>{user.username}</NavLink>
           </li>
         )
       })}

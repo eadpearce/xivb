@@ -43,12 +43,12 @@ ReactDOM.render(
         <Route path="/login" component={Login}/>
         <Route path="/about" component={About}/>
         <Route path="/users" component={Users}/>
-        <Route path="/users/:username" component={User}/>
-        <Route path="/users/:username/posts" component={Posts}/>
-        <Route path="/users/:username/posts/:postId" component={Post}/>
+        <Route path="/:username" component={User}/>
+        <Route path="/:username/posts" component={Posts}/>
+        <Route path="/:username/posts/:postId" component={Post}/>
         <Route path="/characters" component={Characters}/>
         <Route path="/characters/:characterId" component={Character} />
-        <Route path="/users/:userId/posts/:postId/comments/:commentId" component={Comment} />
+        <Route path="/:userId/posts/:postId/comments/:commentId" component={Comment} />
         <Route path="/posts/new" component={NewPost} />
         </Route>
     </Router>

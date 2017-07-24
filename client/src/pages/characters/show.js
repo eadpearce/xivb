@@ -55,7 +55,7 @@ class Character extends Component {
         </div>
         <div className="w-25-ns w-100 fl-ns pl1">
         <h3 className="grd-silver f4 play">Played by: </h3>
-          <p><Link to={'/users/'+character.user.username}>{character.user.username}</Link> on {character.data.data.server}</p>
+          <p><Link to={'/'+character.user.username}>{character.user.username}</Link> on {character.data.data.server}</p>
         </div>
 
         <h3 className="cb grd-silver f4 play">Current class:</h3>
