@@ -36,13 +36,14 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
         :comments => {
-          :only => [:body, :id, :date_created],
+          :methods => [:date_created],
+          :only => [:body, :id],
           :include => {
             :user => {:only => :username}
           }
         }
       },
-      :only => [:title, :body, :date_created]
+      :only => [:title, :body, :date_created, :id]
     )
   end
 

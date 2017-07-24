@@ -48,9 +48,10 @@ class NewPost extends Component {
         value={post.title}></input>
       <textarea
         onChange={this.onChange}
-        name="post"
+        name="body"
         className="db mv2 w-100"
-        rows="20">{post.body}</textarea>
+        value={post.body}
+        rows="20"/>
       <input className="btn green-btn" type="submit" value="Post"></input>
       </form>
       </main>

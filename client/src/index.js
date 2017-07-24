@@ -48,7 +48,7 @@ ReactDOM.render(
         <Route path="/users/:username/posts/:postId" component={Post}/>
         <Route path="/characters" component={Characters}/>
         <Route path="/characters/:characterId" component={Character} />
-        <Route path="/comments/:commentId" component={Comment} />
+        <Route path="/users/:userId/posts/:postId/comments/:commentId" component={Comment} />
         <Route path="/posts/new" component={NewPost} />
         </Route>
     </Router>

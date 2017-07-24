@@ -36,7 +36,7 @@ class Post extends Component {
         return (post.comments[0]) ?
         (
           <div key={comment.id}>
-            <p className="grd-silver play f5">At <Link className="grd-gold" to={"/comments/"+comment.id}>{comment.date_created}</Link> <Link className="grd-gold" to={"/users/"+comment.user.username}>{comment.user.username}</Link> said: </p>
+            <p className="grd-silver play f5">At <Link className="grd-gold" to={"/users/"+post.user.username+"/posts/"+post.id+"/comments/"+comment.id}>{comment.date_created}</Link> <Link className="grd-gold" to={"/users/"+comment.user.username}>{comment.user.username}</Link> said: </p>
             <p className="blog-post">{comment.body}</p>
           </div>
         ) : (
