@@ -24,13 +24,15 @@ class User extends Component {
       });
     })
     .then(() => {
-      console.log(this.state.user.posts);
       const recentPosts = [];
-      for (let i = 0; i < 5; i++) {
-        recentPosts.push(this.state.user.posts[i]);
+      if (this.state.user.posts.length > 0) {
+        for (let i = 0; i < 5; i++) {
+          recentPosts.push(this.state.user.posts[i]);
+        }
+        this.setState({ recentPosts: recentPosts, loaded: true });
+        console.log(this.state.recentPosts);
       }
-      this.setState({ recentPosts: recentPosts, loaded: true });
-      console.log(this.state.recentPosts);
+
     })
   }
   render() {

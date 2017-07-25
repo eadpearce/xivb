@@ -15,7 +15,7 @@ class Header extends Component {
     let loggedInAs = null;
     if (Auth.isLoggedIn()) {
       loggedInAs = <li className="fl pr2"><span className="grd-silver">Logged in as </span>
-      <Link className="grd-gold" to={"/users/"+Auth.currentUser()}>{Auth.currentUser()}</Link></li>
+      <Link className="grd-gold" to={"/"+Auth.currentUser()}>{Auth.currentUser()}</Link></li>
     }
     return (
       <div className="play nav w-100 h2 pa2 bg-black">
