@@ -11,7 +11,7 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
       },
-      :only => [:title, :body, :date_created, :id]
+      :only => [:title, :body, :long_date, :short_date, :id]
     )
   end
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
       },
-      :only => [:title, :body, :date_created, :created_at, :id]
+      :only => [:title, :body, :long_date, :short_date, :created_at, :id]
     )
   end
 
@@ -36,14 +36,14 @@ class PostsController < ApplicationController
         :character => {
           :only => [:id, :data]},
         :comments => {
-          :methods => [:date_created],
+          :methods => [:long_date, :short_date],
           :only => [:body, :id],
           :include => {
             :user => {:only => :username}
           }
         }
       },
-      :only => [:title, :body, :date_created, :id]
+      :only => [:title, :body, :long_date, :short_date, :id]
     )
   end
 

@@ -14,7 +14,10 @@ class UsersController < ApplicationController
       :include => {
         :main => {:only => [:id, :data, :lodestone_id]},
         :alts => {:only => [:id, :data, :lodestone_id]},
-        :posts => {:only => [:title, :id]}
+        :posts => {
+          :only => [:title, :id],
+          :methods => [:long_date, :short_date]
+        }
       },
       :only => [:username, :main_job, :about, :age]
     )
