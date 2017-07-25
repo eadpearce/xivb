@@ -9,7 +9,7 @@ class Home extends Component {
       <main className={classLists.container}>
       <h1 className="f1 cinzel glow">Dashboard</h1>
       <div className="mb3">
-        <Link className="play grd-gold f4" to="/posts/new">
+        <Link className="play grd-gold f4" to={"/"+Auth.currentUser()+"/posts"}>
           <img className="v-mid pr2" src="https://ffxiv.gamerescape.com/w/images/8/86/Main_Command_26_Icon.png"/>
           View my posts</Link>
       </div>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { IndexLink } from 'react-router'
 import Auth from '../Auth'
-import NavLink from './NavLink'
 
 class Header extends Component {
   render() {
@@ -21,10 +20,9 @@ class Header extends Component {
       <div className="play nav w-100 h2 pa2 bg-black">
         <IndexLink className="fl grd-gold" to="/">XIVB</IndexLink>
         <ul role="Navigation" className="fr mv0 pa0">
-          <li className="fl pr2"><NavLink className="grd-gold" to="/" onlyActiveOnIndex={true}>Home</NavLink></li>
-          <li className="fl pr2"><NavLink className="grd-gold" to="/about">About</NavLink></li>
-          <li className="fl pr2"><NavLink className="grd-gold" to="/users">Users</NavLink></li>
-          <li className="fl pr2"><NavLink className="grd-gold" to="/characters">Characters</NavLink></li>
+          <li className="fl pr2"><Link className="grd-gold" to="/about">About</Link></li>
+          <li className="fl pr2"><Link className="grd-gold" to="/users">Users</Link></li>
+          <li className="fl pr2"><Link className="grd-gold" to="/characters">Characters</Link></li>
           {loggedInAs}
           {loggedIn}
         </ul>
