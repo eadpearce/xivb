@@ -21,6 +21,7 @@ import User from './pages/users/show'
 import Posts from './pages/posts/index'
 import Post from './pages/posts/show'
 import NewPost from './pages/posts/new'
+import EditPost from './pages/posts/edit'
 import NewComment from './pages/comments/new'
 import Characters from './pages/characters/index'
 import Character from './pages/characters/show'
@@ -48,6 +49,7 @@ ReactDOM.render(
         <Route path="/:username" component={User}/>
         <Route path="/:username/posts" component={Posts}/>
         <Route path="/:username/posts/:postId" component={Post}/>
+        <Route path="/:username/posts/:postId/edit" component={EditPost}/>
         <Route path="/characters/:characterId" component={Character} />
         <Route path="/:username/posts/:postId/comments/new" component={NewComment} />
         <Route path="/:username/posts/:postId/comments/:commentId" component={Comment} />

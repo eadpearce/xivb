@@ -7,8 +7,9 @@ class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: {},
-      loaded: true,
+      user: {},
+      post: { title: '', body: ''},
+      loaded: false,
       errors: []
     };
     this.onChange = this.onChange.bind(this);
@@ -19,26 +20,91 @@ class NewPost extends Component {
     const post = this.state.post;
     post[field] = e.target.value;
     this.setState({ post });
+    console.log("post", post[field]);
   }
   onSubmit(e) {
     e.preventDefault();
-    Auth.fetch('/api/posts', {
-      method: 'POST',
-      body: {
-        title: this.state.post.title,
-        body: this.state.post.body
-      }
-    })
-    .then(() => {
-      this.props.router.push('/');
+    if (this.state.post.author_id === Auth.currentUser()) {
+      Auth.fetch('/api/posts', {
+        method: 'POST',
+        body: {
+          title: this.state.post.title,
+          body: this.state.post.body,
+        }
+      })
+      .then(() => {
+        this.props.router.push('/');
+      });
+    } else {
+      console.log(this.state.post.title, this.state.post.body, this.state.post.author_id);
+      Auth.fetch('/api/posts', {
+        method: 'POST',
+        body: {
+          title: this.state.post.title,
+          body: this.state.post.body,
+          character_id: this.state.post.author_id
+        }
+      })
+      .then(() => {
+        this.props.router.push('/');
+      });
+
+    }
+
+  }
+  componentDidMount() {
+    this.fetchUser();
+  }
+  fetchUser() {
+    Auth.fetch(`/api/users/${Auth.currentUser()}`, {})
+    .then(response => {
+      this.setState({
+        user: response,
+        loaded : true
+      });
     });
   }
   render() {
     const post = this.state.post;
+    let user = null;
+    let alts = null;
+    let select = null;
+    let main = null;
+    let user_author = null;
+    const options = [];
+
+    if (this.state.loaded) {
+      user = this.state.user;
+      alts = this.state.user.alts.map(alt => {
+        return React.createElement(
+          'option',
+          { value: alt.id, key: alt.id },
+          alt.data.name
+        );
+      });
+      user_author = React.createElement(
+        'option',
+        { value: user.id, key: user.id },
+        user.username
+      );
+      main = React.createElement(
+        'option',
+        { value: user.main.id, key: user.main.id },
+        user.main.data.name
+      );
+      options.push([user_author, main, alts]);
+      select = React.createElement(
+        'select',
+          { name: 'author_id', onChange: this.onChange, value: user.id },
+          options
+      );
+    }
     return (this.state.loaded) ? (
       <main className={classLists.container}>
       <h1 className="glow cinzel f1">New Post</h1>
       <p>Blog posts support <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a></p>
+      <label className="play f4 grd-silver pr2">Select post author:</label>
+      {select}
       <form action="/posts" onSubmit={this.onSubmit}>
       <input
         onChange={this.onChange}

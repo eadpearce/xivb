@@ -27,13 +27,25 @@ class Post extends Component {
   }
   render() {
     const post = this.state.post;
+    let author = null;
+    if (this.state.loaded) {
+      if (post.character) author = <p className="fl grd-silver f4 play">By <Link className="grd-gold" to={"/characters/"+post.character.id}>{post.character.data.name}</Link></p>;
+      else author = <p className="fl grd-silver f4 play">By <Link className="grd-gold" to={"/"+post.user.username}>{post.user.username}</Link></p>;
+    }
+
     return (this.state.loaded) ? (
       <main className={classLists.container}>
       <h1 className="glow f1 cinzel">{post.title}</h1>
-      <p className="grd-silver f4 play">At {post.date_created} <Link className="grd-gold" to={"/"+post.user.username}>{post.user.username}</Link> wrote:</p>
+
+      {/* NAVIGATION */}
+      {author}
+      <Link className="fr db grd-gold play f4 mb2" to={"/"+post.user.username+"/posts"}>Back
+      <img alt="Go back" className="v-mid pl2" src="https://ffxiv.gamerescape.com/w/images/5/5e/Main_Command_19_Icon.png"/>
+      </Link>
+      <p className="cb grd-silver f4 play">At {post.long_date} <Link className="grd-gold" to={"/"+post.user.username}>{post.user.username}</Link> wrote:</p>
       <ReactMarkdown className="blog-post" source={post.body} />
       <Link to={"/"+post.user.username+"/posts/"+post.id+"/comments/new"} className="fl small btn green-btn">Comment</Link>
-      <Link to="" className="fr small btn blue-btn">Edit/Delete</Link>
+      <Link to={"/"+post.user.username+"/posts/"+post.id+"/edit"} className="fr small btn blue-btn">Edit/Delete</Link>
 
       {/* COMMENTS */}
       <h2 className="cb grd-silver play f4">Comments</h2>
