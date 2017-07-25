@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   def long_date
     require 'date'
     date = self.created_at
-    formatted_date = date.strftime('%c')
+    formatted_date = date.strftime('%X %D')
     formatted_date
   end
   def short_date

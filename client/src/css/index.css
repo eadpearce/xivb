@@ -90,8 +90,9 @@ button {
   font-family: inherit;
   font-size: inherit;
 }
+.big { width: 200px; }
+.small { width: 100px; }
 .btn {
-  width: 100px;
   text-align: center;
   padding: 10px;
   -moz-border-radius: 6px;

@@ -6,7 +6,17 @@ class Auth {
   }
 
   static isLoggedIn() {
-    return localStorage.getItem('token') !== null;
+    // need to check if token has expired
+    // decoded.exp is in UNIX time which is in seconds
+    // JS measures in milliseconds so need to multiply by 1000
+    if (Auth.getToken()) {
+      const token = Auth.getToken();
+      const decoded = jwt_decode(token);
+      const now = new Date();
+      if(decoded.exp*1000 > now.getTime()) {
+        return token;
+      } else return null;
+    }
   }
 
   static removeToken() {
@@ -14,9 +24,14 @@ class Auth {
   }
 
   static currentUser() {
-    const token = localStorage.getItem('token');
-    const decoded = jwt_decode(token);
-    return decoded.username;
+    if (Auth.getToken()) {
+      const token = Auth.getToken();
+      const decoded = jwt_decode(token);
+      const now = new Date();
+      // decoded.exp is in UNIX time which is in seconds
+      // JS measures in milliseconds so need to multiply by 1000
+      if(decoded.exp*1000 > now.getTime()) return decoded.username;
+    }
   }
 
   static getToken() {

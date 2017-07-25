@@ -30,8 +30,11 @@ class User extends Component {
         for (let i = 0; i < 5; i++) {
           recentPosts.push(this.state.user.posts[i]);
         }
-        this.setState({ recentPosts: recentPosts, loaded: true });
-        console.log(this.state.recentPosts);
+        // sort newest first
+        const sorted_posts = recentPosts.sort((a,b) => {
+          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        }).reverse();
+        this.setState({ recentPosts: sorted_posts, loaded: true });
       }
 
     })
@@ -58,7 +61,8 @@ class User extends Component {
 
         {/* USER INFO */}
         <div className="cb w-100"><h2 className="grd-silver play f4 dib mt3">Age: </h2><span> {user.age}</span></div>
-        <h2 className="grd-silver play f4">About: </h2><ReactMarkdown className="blog-post" source={user.about} />
+        <h2 className="grd-silver play f4">About: </h2>
+        <ReactMarkdown className="blog-post" source={user.about} />
 
         {/* CHARACTER INFO */}
         <h2 className="grd-silver play f4 mt3 mb1">Main Character: </h2>

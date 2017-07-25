@@ -17,9 +17,12 @@ class Posts extends Component {
   }
   fetchPosts() {
     Auth.fetch(`/api/users/${this.props.params.username}/posts`, {})
-    .then(response => {
+    .then(posts => {
+      const sorted_posts = posts.sort((a,b) => {
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+      }).reverse();
       this.setState({
-        posts: response,
+        posts: sorted_posts,
         loaded : true
       });
     });
@@ -33,7 +36,7 @@ class Posts extends Component {
         return (
           <div key={post.id}>
           <Link className="f4 play grd-gold" to={"/"+post.user.username+"/posts/"+post.id}>{post.title}</Link>
-          <p className="mt2 mb3">Posted at {post.date_created}</p>
+          <p className="mt2 mb3">{post.long_date}</p>
           </div>
         )
       })}
