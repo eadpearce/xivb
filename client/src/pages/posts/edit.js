@@ -43,7 +43,7 @@ class EditPost extends Component {
       }
     })
     .then(() => {
-      this.props.router.push('/');
+      this.props.router.push(`/${this.props.params.username}/posts/${this.props.params.postId}`);
     });
   }
   render() {

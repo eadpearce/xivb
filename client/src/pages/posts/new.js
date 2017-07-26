@@ -20,10 +20,17 @@ class NewPost extends Component {
     const post = this.state.post;
     post[field] = e.target.value;
     this.setState({ post });
-    console.log("post", post[field]);
   }
   onSubmit(e) {
     e.preventDefault();
+    if (!this.state.post.title) {
+      this.setState({ errors: "Title cannot be empty" })
+      return;
+    }
+    if (!this.state.post.body) {
+      this.setState({ errors: "Post body cannot be empty" })
+      return;
+    }
     if (this.state.post.author_id === Auth.currentUser()) {
       Auth.fetch('/api/posts', {
         method: 'POST',
@@ -36,7 +43,6 @@ class NewPost extends Component {
         this.props.router.push('/');
       });
     } else {
-      console.log(this.state.post.title, this.state.post.body, this.state.post.author_id);
       Auth.fetch('/api/posts', {
         method: 'POST',
         body: {
@@ -45,12 +51,10 @@ class NewPost extends Component {
           character_id: this.state.post.author_id
         }
       })
-      .then(() => {
-        this.props.router.push('/');
+      .then(response => {
+        this.props.router.push(`/${Auth.currentUser()}/posts/${response.id}`);
       });
-
     }
-
   }
   componentDidMount() {
     this.fetchUser();
@@ -121,6 +125,7 @@ class NewPost extends Component {
         rows="20"/>
       <input className="btn green-btn" type="submit" value="Post"></input>
       </form>
+      <p className="red">{this.state.errors}</p>
       </main>
     ) : (
       <Loading/>

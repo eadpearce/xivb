@@ -27,14 +27,14 @@ class User extends Component {
     .then(() => {
       const recentPosts = [];
       if (this.state.user.posts.length > 0) {
-        for (let i = 0; i < 5; i++) {
-          recentPosts.push(this.state.user.posts[i]);
-        }
         // sort newest first
-        const sorted_posts = recentPosts.sort((a,b) => {
+        const sorted_posts = this.state.user.posts.sort((a,b) => {
           return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
         }).reverse();
-        this.setState({ recentPosts: sorted_posts, loaded: true });
+        for (let i = 0; i < 5; i++) {
+          recentPosts.push(sorted_posts[i]);
+        }
+        this.setState({ recentPosts: recentPosts, loaded: true });
       }
 
     })
@@ -80,7 +80,7 @@ class User extends Component {
 
         {/* TOP 5 RECENT POSTS */}
         <h2 className="grd-silver play f4 mb1">Recent posts: </h2>
-        <p className="lh-title">
+        <div className="lh-title">
         {recentPosts.map(post => {
           if (post) {
             if (post.title) {
@@ -92,7 +92,8 @@ class User extends Component {
            } else return <span key="1">No posts yet.</span>
           }
         })}
-        </p>
+        <Link className="play grd-gold f4" to={"/"+user.username+"/posts"}>View all posts</Link>
+        </div>
 
 
       </main>

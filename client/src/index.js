@@ -16,17 +16,23 @@ import './css/index.css';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import About from './pages/About'
 import Home from './pages/Home'
+import Login from './pages/Login'
+
 import Users from './pages/users/index'
 import User from './pages/users/show'
+
 import Posts from './pages/posts/index'
 import Post from './pages/posts/show'
 import NewPost from './pages/posts/new'
 import EditPost from './pages/posts/edit'
-import NewComment from './pages/comments/new'
+
 import Characters from './pages/characters/index'
 import Character from './pages/characters/show'
+
 import Comment from './pages/comments/show'
-import Login from './pages/Login'
+import NewComment from './pages/comments/new'
+import EditComment from './pages/comments/edit'
+
 import Auth from './Auth'
 
 // instead of rendering app we render the router
@@ -53,6 +59,7 @@ ReactDOM.render(
         <Route path="/characters/:characterId" component={Character} />
         <Route path="/:username/posts/:postId/comments/new" component={NewComment} />
         <Route path="/:username/posts/:postId/comments/:commentId" component={Comment} />
+        <Route path="/:username/posts/:postId/comments/:commentId/edit" component={EditComment} />
         <Route path="/posts/new" component={NewPost} />
         </Route>
     </Router>

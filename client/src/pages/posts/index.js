@@ -32,6 +32,12 @@ class Posts extends Component {
     return (this.state.loaded) ? (
       <main className={classLists.container}>
       <h1 className="cinzel f1 glow">{this.props.params.username}'s Posts</h1>
+
+      <p className="fl play f4 grd-silver">All posts by <Link className="grd-gold" to={"/"+this.props.params.username}>{this.props.params.username}</Link></p>
+      <Link className="fr db grd-gold play f4 mb2" to={"/"+this.props.params.username}>Back
+      <img alt="Go back" className="v-mid pl2" src="https://ffxiv.gamerescape.com/w/images/5/5e/Main_Command_19_Icon.png"/>
+      </Link>
+      <div className="cb">
       {posts.map(post => {
         return (
           <div key={post.id}>
@@ -40,6 +46,7 @@ class Posts extends Component {
           </div>
         )
       })}
+      </div>
       </main>
     ) : (
       <Loading/>

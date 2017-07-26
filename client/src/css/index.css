@@ -94,7 +94,8 @@ button {
 .big { width: 200px; }
 .small { width: 100px; }
 .btn {
-  margin: 1rem 0 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   text-align: center;
   line-height: 1;
   padding: 10px;

@@ -28,11 +28,7 @@ class Users extends Component {
       <main className={classLists.container}>
       <h1 className="glow cinzel f1">Users</h1>
       {users.map(user => {
-        return (
-          <li key={user.id}>
-            <NavLink to={'/'+user.username}>{user.username}</NavLink>
-          </li>
-        )
+        return <NavLink key={user.username} to={'/'+user.username}>{user.username}</NavLink>
       })}
       </main>
     ) : (
