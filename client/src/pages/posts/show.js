@@ -4,6 +4,7 @@ import {Link} from 'react-router'
 import Auth from '../../Auth'
 import classLists from '../../css/classLists'
 import ReactMarkdown from 'react-markdown'
+import Comment from '../../components/Comment'
 
 class Post extends Component {
   constructor(props) {
@@ -62,16 +63,8 @@ class Post extends Component {
 
       {/* COMMENTS */}
       <h2 className="cb grd-silver play f4">Comments</h2>
-      {post.comments.map(comment => {
-        return (post.comments) ?
-        (
-          <div key={comment.id}>
-            <p className="grd-silver play f5 mv3">At <Link className="grd-gold" to={"/"+post.user.username+"/posts/"+post.id+"/comments/"+comment.id}>{comment.long_date}</Link> <Link className="grd-gold" to={"/"+comment.user.username}>{comment.user.username}</Link> said: </p>
-            <ReactMarkdown className="blog-post" source={comment.body}/>
-          </div>
-        ) : (
-          <div key="1">No comments yet.</div>
-        )
+      {post.comments.map((comment, i) => {
+        return <Comment key={i} post={post} comment={comment}/>
       })}
       </main>
     ) : (

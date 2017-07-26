@@ -48,14 +48,17 @@ ReactDOM.render(
             Auth.removeToken();
             replace('/');
           }}/>
+        
         <Route path="/login" component={Login}/>
         <Route path="/about" component={About}/>
         <Route path="/users" component={Users}/>
         <Route path="/characters" component={Characters}/>
-        <Route path="/:username" component={User}/>
-        <Route path="/:username/posts" component={Posts}/>
-        <Route path="/:username/posts/:postId" component={Post}/>
-        <Route path="/:username/posts/:postId/edit" component={EditPost}/>
+        <Route path="/:username" component={User}>
+          <Route path="/:username/posts" component={Posts}>
+            <Route path="/:username/posts/:postId" component={Post}/>
+            <Route path="/:username/posts/:postId/edit" component={EditPost}/>
+          </Route>
+        </Route>
         <Route path="/characters/:characterId" component={Character} />
         <Route path="/:username/posts/:postId/comments/new" component={NewComment} />
         <Route path="/:username/posts/:postId/comments/:commentId" component={Comment} />
