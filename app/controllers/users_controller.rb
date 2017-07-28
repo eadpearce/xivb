@@ -10,17 +10,20 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render :json => @user.as_json(
-      :include => {
-        :main => {:only => [:id, :data, :lodestone_id]},
-        :alts => {:only => [:id, :data, :lodestone_id]},
-        :posts => {
-          :only => [:title, :id, :created_at],
-          :methods => [:long_date, :short_date]
-        }
-      },
-      :only => [:username, :main_job, :about, :age]
-    )
+    if @user
+      render :json => @user.as_json(
+        :include => {
+          :main => {:only => [:id, :data, :lodestone_id]},
+          :alts => {:only => [:id, :data, :lodestone_id]},
+          :posts => {
+            :only => [:title, :id, :created_at],
+            :methods => [:long_date, :short_date]
+          }
+        },
+        :only => [:username, :main_job, :about, :age]
+      )
+    else render json: { error: "User not found." }, status: :not_found
+    end
   end
 
   # POST /users

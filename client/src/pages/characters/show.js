@@ -3,13 +3,15 @@ import { Link } from 'react-router'
 import Auth from '../../Auth'
 import Loading from '../../components/Loading'
 import classLists from '../../css/classLists'
+import NotFound from '../NotFound'
 
 class Character extends Component {
   constructor(props) {
     super(props);
     this.state = {
       character: [],
-      loaded: false
+      loaded: false,
+      error: ''
     };
   }
   componentDidMount() {
@@ -18,10 +20,8 @@ class Character extends Component {
   fetchCharacter() {
     Auth.fetch(`/api/characters/${this.props.params.characterId}`, {})
     .then(response => {
-      this.setState({
-        character: response,
-        loaded : true // sets to true when data has been fetched
-      });
+      if (response.status > 400) this.setState({ error: response.error, loaded: true });
+      else this.setState({ character: response, loaded : true });
     });
   }
   render() {
@@ -32,7 +32,7 @@ class Character extends Component {
     const crafterClasses = [];
     // keys of all crafting classes
     const crafters = ['8','9','10','11','12','13','14','15','16','17','18'];
-    if (this.state.loaded) {
+    if (this.state.loaded && !this.state.error) {
       // get keys of classjobs object
       const keys = Object.keys(character.data.data.classjobs);
       for (let i = 0; i < keys.length; i++) {
@@ -44,8 +44,8 @@ class Character extends Component {
       if (character.data.data.title) title = <h2 className="cb script glow f1">{character.data.data.title}</h2>;
       if (character.data.data.grand_company) grand_company = <p className="cb grd-silver play f4"><img alt={character.data.data.grand_company.name+" icon"} height="32" className="v-mid" src={character.data.data.grand_company.icon}/> {character.data.data.grand_company.name} {character.data.data.grand_company.rank}</p>;
     }
-    return (this.state.loaded) ?
-    (
+    if (this.state.loaded && !this.state.error) {
+    return (
       <main className={classLists.container}>
         <h2 className="play grd-silver f3 mt4">Character Profile:</h2>
         <div className="w-75 fl">
@@ -97,9 +97,8 @@ class Character extends Component {
           <p className="blog-post">{character.about}</p>
 
       </main>
-    ) : (
-      <Loading/>
-    );
+    )} else if (this.state.loaded && this.state.error) return <NotFound/>
+    else return <Loading/>;
   }
 }
 

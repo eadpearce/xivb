@@ -5,6 +5,7 @@ import Auth from '../../Auth'
 import classLists from '../../css/classLists'
 import ReactMarkdown from 'react-markdown'
 import Comment from '../../components/Comment'
+import NotFound from '../NotFound'
 
 class Post extends Component {
   constructor(props) {
@@ -20,10 +21,8 @@ class Post extends Component {
   fetchPost() {
     Auth.fetch(`/api/posts/${this.props.params.postId}`, {})
     .then(response => {
-      this.setState({
-        post: response,
-        loaded : true
-      });
+      if (!response.error) this.setState({ post: response, loaded: true });
+      else this.setState({ error: response.error, loaded: true });
     });
   }
   render() {
@@ -31,7 +30,7 @@ class Post extends Component {
     let author = null;
     let comment = null;
     let edit = null;
-    if (this.state.loaded) {
+    if (this.state.loaded && !this.state.error) {
       if (post.character) {
         author = <p className="fl grd-silver f4 play">By <Link className="grd-gold" to={"/characters/"+post.character.id}>{post.character.data.name}</Link></p>;
       } else {
@@ -45,7 +44,8 @@ class Post extends Component {
       }
     }
 
-    return (this.state.loaded) ? (
+    if (this.state.loaded && !this.state.error) {
+    return (
       <main className={classLists.container}>
       <h1 className="glow f1 cinzel">{post.title}</h1>
 
@@ -67,9 +67,8 @@ class Post extends Component {
         return <Comment key={i} post={post} comment={comment}/>
       })}
       </main>
-    ) : (
-      <Loading/>
-    )
+    )} else if (this.state.loaded && this.state.error) return <NotFound/>;
+    else return <Loading/>;
   }
 }
 export default Post;

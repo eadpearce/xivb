@@ -5,13 +5,15 @@ import {Link} from 'react-router'
 import Auth from '../../Auth'
 import classLists from '../../css/classLists'
 import ReactMarkdown from 'react-markdown'
+import NotFound from '../NotFound'
 
 class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: [],
-      recentPosts: ''
+      recentPosts: '',
+      error: ''
     };
   }
   componentDidMount() {
@@ -20,30 +22,30 @@ class User extends Component {
   fetchUser() {
     Auth.fetch(`/api/users/${this.props.params.username}`, {})
     .then(response => {
-      this.setState({
-        user: response
-      });
-    })
-    .then(() => {
-      const recentPosts = [];
-      if (this.state.user.posts.length > 0) {
-        // sort newest first
-        const sorted_posts = this.state.user.posts.sort((a,b) => {
-          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
-        }).reverse();
-        for (let i = 0; i < 5; i++) {
-          recentPosts.push(sorted_posts[i]);
-        }
-        this.setState({ recentPosts: recentPosts, loaded: true });
+      if (response.error) {
+        this.setState({ error: response.error, loaded: true });
       }
-
+      else {
+        this.setState({ user: response });
+        const recentPosts = [];
+        if (this.state.user.posts.length > 0) {
+          // sort newest first
+          const sorted_posts = this.state.user.posts.sort((a,b) => {
+            return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          }).reverse();
+          for (let i = 0; i < 5; i++) {
+            recentPosts.push(sorted_posts[i]);
+          }
+          this.setState({ recentPosts: recentPosts, loaded: true });
+        }
+      }
     })
   }
   render() {
     const user = this.state.user;
     const recentPosts = this.state.recentPosts;
-    return (this.state.loaded) ?
-    (
+    if (this.state.loaded && !this.state.error) {
+      return (
       <main className={classLists.container}>
         <h1 className="glow cinzel f1"><NavLink className="white hover-white" to={'/'+user.username}>{user.username}</NavLink>'s Profile</h1>
         {/* NAVIGATION HERE */}
@@ -97,9 +99,8 @@ class User extends Component {
 
 
       </main>
-    ) : (
-      <Loading/>
-    );
+    )} else if (this.state.loaded && this.state.error) return <NotFound/>
+    else return <Loading/>
   }
 }
 
