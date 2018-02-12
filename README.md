@@ -1,24 +1,15 @@
-# README
+# XIVB MK2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
 
-Things you may want to cover:
+2.4.2
 
-* Ruby version
+## Setup
 
-* System dependencies
+    $ bundle install
+    $ rails db:create db:migrate
+    $ cd client && yarn install
 
-* Configuration
+## Dev server
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    $ rake start
