@@ -18,10 +18,11 @@ gem 'puma', '~> 3.7'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'jwt'
 gem 'figaro'
-gem 'httparty'
 gem 'foreman'
+gem 'httparty'
+gem 'jwt'
+gem 'nokogiri', '>= 1.8.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
