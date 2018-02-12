@@ -44,7 +44,7 @@ class Auth {
       body: options.body && JSON.stringify(options.body),
       headers: {
         Authorization: `Bearer ${Auth.getToken()}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     }).then(res => res.json());
   }
